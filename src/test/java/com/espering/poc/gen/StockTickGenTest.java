@@ -16,12 +16,12 @@ import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 public class StockTickGenTest {
 
 	@Property 
-	public void hold(@InRange(min = "0", max = "9") int digit) {
+	public void hold(@InRange(min="0", max="9") int digit) {
 		assertThat((0 <= digit && digit <= 9), is(true));
 	}
 	
 	@Property 
-	public void testGen(@From(StockTickGen.class) StockTick stockTick) {
+	public void generate(@From(StockTickGen.class) StockTick stockTick) {
 		assertThat(stockTick.getMarket(), isOneOf(Market.NYSE, Market.NASDAQ));
 		assertThat(stockTick.getSymbol(), isOneOf("IBM", "BBY", "C", "GOOG", "APPL"));
 		assertThat((10 <= stockTick.getPrice() && stockTick.getPrice() <= 12), is(true));

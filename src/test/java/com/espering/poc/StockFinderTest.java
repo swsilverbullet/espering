@@ -6,17 +6,12 @@ import static org.hamcrest.CoreMatchers.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.espering.poc.domain.Market;
 import com.espering.poc.domain.StockTick;
 
 public class StockFinderTest {
 	private StockFinder sut = new StockFinder();
 	private StockTick lastFound = null;
-//	private StockFoundListener stockFoundListener = new StockFoundListener() {
-//		@Override
-//		public void found(StockTick stockTick) {
-//			lastFound = stockTick;
-//		}
-//	};
 			
 	@Before
 	public void setUp() throws Exception {
@@ -30,13 +25,13 @@ public class StockFinderTest {
 	}
 
 	@Test
-	public void testStockShouldBeFound() {
-//		StockTick tick1 = new StockTick("Apple", "APPL", 99.8);
-//		this.sut.sendStockTick(tick1);
-//		assertThat(this.lastFound, nullValue());
-//		
-//		StockTick tick2 = new StockTick("Apple", "APPL", 100.1);
-//		this.sut.sendStockTick(tick2);
-//		assertThat(this.lastFound, equalTo(tick2));
+	public void testStockShouldBeFoundIfVolumeGreaterThanEqualTo1000() {
+		StockTick tick1 = new StockTick(Market.NASDAQ, "APPL", 10, 999);
+		this.sut.sendStockTick(tick1);
+		assertThat(this.lastFound, nullValue());
+		
+		StockTick tick2 = new StockTick(Market.NASDAQ, "APPL", 11, 1000);
+		this.sut.sendStockTick(tick2);
+		assertThat(this.lastFound, is(tick2));
 	}
 }
