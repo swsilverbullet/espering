@@ -1,5 +1,6 @@
 package com.espering.poc;
 
+import com.espering.poc.domain.StockTick;
 import com.espertech.esper.client.Configuration;
 import com.espertech.esper.client.EPServiceProvider;
 import com.espertech.esper.client.EPServiceProviderManager;
@@ -17,7 +18,7 @@ public class StockFinder {
 		config.addEventType("StockTick", StockTick.class);
 		
 		this.epServiceProvider = EPServiceProviderManager.getProvider("StockTick", config);
-		this.epStatement = epServiceProvider.getEPAdministrator().createEPL("select * from StockTick t where t.price >= 100");
+		this.epStatement = epServiceProvider.getEPAdministrator().createEPL("select * from StockTick t where t.volume >= 1000");
 		this.epStatement.addListener(new UpdateListener() {
 			@Override
 			public void update(EventBean[] newEvents, EventBean[] oldEvents) {
