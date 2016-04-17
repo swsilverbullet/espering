@@ -22,7 +22,7 @@ public class InMemoryStockRepository implements StockRepository {
 	}
 
 	@Override
-	public Optional<Stock> get(Market market, String symbol) {
+	public Optional<Stock> get(Market market, final String symbol) {
 		return getAll(market).stream().filter(new Predicate<Stock>() {
 			@Override public boolean test(Stock stock) {
 				return stock.getSymbol().equals(symbol);

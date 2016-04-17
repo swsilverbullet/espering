@@ -10,5 +10,5 @@ public interface StockRepository {
 
 	public Set<Stock> getAll(Market market);
 	
-	public Optional<Stock> get(Market market, String symbol);
+	public Optional<Stock> get(Market market, final String symbol);
 }

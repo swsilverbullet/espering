@@ -64,19 +64,16 @@
             <groupId>com.pholser</groupId>
             <artifactId>junit-quickcheck-core</artifactId>
             <version>0.6</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.pholser</groupId>
             <artifactId>junit-quickcheck-generators</artifactId>
             <version>0.6</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>com.pholser</groupId>
             <artifactId>junit-quickcheck-guava</artifactId>
             <version>0.6</version>
-            <scope>test</scope>
         </dependency>                
     </dependencies>
 
