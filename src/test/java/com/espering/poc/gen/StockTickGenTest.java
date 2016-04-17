@@ -21,10 +21,10 @@ public class StockTickGenTest {
 	}
 	
 	@Property 
-	public void generate(@From(StockTickGen.class) StockTick stockTick) {
-		assertThat(stockTick.getMarket(), isOneOf(Market.NYSE, Market.NASDAQ));
-		assertThat(stockTick.getSymbol(), isOneOf("IBM", "BBY", "C", "GOOG", "APPL"));
-		assertThat((10 <= stockTick.getPrice() && stockTick.getPrice() <= 12), is(true));
-		assertThat((0 <= stockTick.getVolume() && stockTick.getVolume() <= 10000), is(true));
+	public void generate(@From(StockTickGen.class) StockTick tick) {
+		assertThat(tick.getMarket(), isOneOf(Market.NYSE, Market.NASDAQ));
+		assertThat(tick.getSymbol(), isOneOf("IBM", "BBY", "C", "GOOG", "APPL"));
+		assertThat((10 <= tick.getPrice() && tick.getPrice() <= 12), is(true));
+		assertThat((0 <= tick.getVolume() && tick.getVolume() <= 10000), is(true));
 	}
 }
